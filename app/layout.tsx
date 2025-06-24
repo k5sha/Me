@@ -34,7 +34,13 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head>
+        <title>{siteConfig.name}</title>
+        <meta content={siteConfig.description} name="description" />
+        <meta content="index, follow" name="robots" />
+        <link href="https://k5sha.xyz" rel="canonical" />
+        <link href="/favicon.ico" rel="icon" />
+      </head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",

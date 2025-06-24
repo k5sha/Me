@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://k5sha.xyz
+
+# Sitemaps
+Sitemap: https://k5sha.xyz/sitemap.xml

@@ -64,6 +64,6 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/yurii-yevtushenko-730a502a5",
     medium: "https://www.medium.com/@k5sha",
     sponsor: "https://patreon.com/k5sha",
-    ticketo: "https://tikceto.k5sha.xyz"
+    ticketo: "tikceto.k5sha.xyz/"
   },
 };

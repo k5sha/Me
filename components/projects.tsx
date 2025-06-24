@@ -52,7 +52,7 @@ export const Projects = () => {
               alt="heroui logo"
               height={40}
               radius="sm"
-              src="/projects/portfolio.png"
+              src="/favicon.ico"
               width={40}
             />
             <div className="flex flex-col">
@@ -61,7 +61,7 @@ export const Projects = () => {
                 className="text-small text-default-500"
                 href="/"
               >
-                k5sha.run.place
+                k5sha.xyz
               </Link>
             </div>
           </CardHeader>

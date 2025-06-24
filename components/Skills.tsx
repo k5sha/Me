@@ -1,6 +1,5 @@
 "use client";
 
-import { Chip } from "@heroui/chip";
 import { Progress } from "@heroui/progress";
 
 const skills = [
@@ -21,11 +20,11 @@ export const Skills = () => {
             <span className="font-medium">{skill.name}</span>
             <span className="text-gray-500">{skill.level}%</span>
           </div>
-          <Progress 
-            size="sm" 
-            value={skill.level} 
-            color="success"
+          <Progress
             className="max-w-full"
+            color="success"
+            size="sm"
+            value={skill.level}
           />
         </div>
       ))}

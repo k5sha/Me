@@ -1,4 +1,3 @@
-import { siteConfig } from "@/config/site";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import {
@@ -9,10 +8,12 @@ import {
   NavbarBrand,
   NavbarItem,
 } from "@heroui/navbar";
-
 import NextLink from "next/link";
+
 import { LinkedInIcon, GithubIcon, HeartFilledIcon } from "./icons";
 import { ThemeSwitch } from "./theme-switch";
+
+import { siteConfig } from "@/config/site";
 
 export const Navbar = () => {
   return (
@@ -38,7 +39,11 @@ export const Navbar = () => {
             aria-label="LinkedIn"
             href={siteConfig.links.linkedin}
           >
-            <LinkedInIcon className="text-default-500" size={20} viewBox={"0 0 16 16"} />
+            <LinkedInIcon
+              className="text-default-500"
+              size={20}
+              viewBox={"0 0 16 16"}
+            />
           </Link>
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
@@ -67,38 +72,22 @@ export const Navbar = () => {
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
           <NavbarItem>
-            <Link
-              color="foreground"
-              href="#skills"
-              size="lg"
-            >
+            <Link color="foreground" href="#skills" size="lg">
               Skills
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link
-              color="foreground"
-              href="#projects"
-              size="lg"
-            >
+            <Link color="foreground" href="#projects" size="lg">
               Projects
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link
-              color="foreground"
-              href="#experience"
-              size="lg"
-            >
+            <Link color="foreground" href="#experience" size="lg">
               Experience
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link
-              color="foreground"
-              href="#contact"
-              size="lg"
-            >
+            <Link color="foreground" href="#contact" size="lg">
               Contact
             </Link>
           </NavbarItem>

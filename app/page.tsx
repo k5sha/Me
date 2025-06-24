@@ -5,19 +5,18 @@ import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { Chip } from "@heroui/chip";
 import { Tooltip } from "@heroui/tooltip";
-
-import { 
-  FiGithub, 
-  FiLinkedin, 
-  FiMail, 
+import {
+  FiGithub,
+  FiLinkedin,
+  FiMail,
   FiExternalLink,
   FiAward,
   FiCode,
   FiBriefcase,
-  FiUserCheck
+  FiUserCheck,
 } from "react-icons/fi";
 import { SiMedium } from "react-icons/si";
-import { FaAws, FaDocker, FaReact, FaNodeJs } from "react-icons/fa";
+import { FaAws, FaReact } from "react-icons/fa";
 import { SiGo, SiNextdotjs, SiPostgresql, SiKubernetes } from "react-icons/si";
 
 import { siteConfig } from "@/config/site";
@@ -31,15 +30,15 @@ export default function Home() {
       {/* Me Section */}
       <section className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24">
         <div className="flex-1 space-y-6">
-          <Chip 
-            color="success" 
-            variant="flat"
+          <Chip
+            color="success"
             startContent={<FiUserCheck className="text-lg" />}
+            variant="flat"
           >
             Available for work
           </Chip>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-            Hi, I'm Yurii Yevtushenko
+            Hi, I&#39;m Yurii Yevtushenko
             <span className="text-success-500">.</span>
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 flex items-center gap-2">
@@ -61,11 +60,11 @@ export default function Home() {
             >
               Contact Me
             </Button>
-            <Button 
-              as={Link} 
-              href="#projects" 
-              variant="bordered"
+            <Button
+              as={Link}
               endContent={<FiExternalLink size={16} />}
+              href="#projects"
+              variant="bordered"
             >
               View Projects
             </Button>
@@ -97,14 +96,10 @@ export default function Home() {
             Featured <span className="text-success-500">Projects</span>
           </h2>
           <div className="flex items-center gap-1 invisible  md:visible">
-            <Link 
-              color="success" 
-              href="/projects" 
-              underline="hover"
-            >
+            <Link color="success" href="/projects" underline="hover">
               View All
             </Link>
-            <FiExternalLink size={16} className="text-success-500" />
+            <FiExternalLink className="text-success-500" size={16} />
           </div>
         </div>
 
@@ -116,7 +111,10 @@ export default function Home() {
             tags={[
               { name: "Go", icon: <SiGo className="text-blue-500" /> },
               { name: "React", icon: <FaReact className="text-blue-400" /> },
-              { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600" /> }
+              {
+                name: "PostgreSQL",
+                icon: <SiPostgresql className="text-blue-600" />,
+              },
             ]}
             title="Ticketo"
           />
@@ -127,8 +125,14 @@ export default function Home() {
             link="/"
             tags={[
               { name: "Next.js", icon: <SiNextdotjs /> },
-              { name: "Tailwind", icon: <span className="text-cyan-500">T</span> },
-              { name: "HeroUI", icon: <span className="text-success-500">H</span> }
+              {
+                name: "Tailwind",
+                icon: <span className="text-cyan-500">T</span>,
+              },
+              {
+                name: "HeroUI",
+                icon: <span className="text-success-500">H</span>,
+              },
             ]}
             title="Portfolio"
           />
@@ -140,8 +144,11 @@ export default function Home() {
             link="#"
             tags={[
               { name: "Go", icon: <SiGo className="text-blue-500" /> },
-              { name: "Kubernetes", icon: <SiKubernetes className="text-blue-400" /> },
-              { name: "AWS", icon: <FaAws className="text-amber-600" /> }
+              {
+                name: "Kubernetes",
+                icon: <SiKubernetes className="text-blue-400" />,
+              },
+              { name: "AWS", icon: <FaAws className="text-amber-600" /> },
             ]}
             title="Coming Soon"
           />
@@ -160,9 +167,10 @@ export default function Home() {
       {/* Contact Section */}
       <section className="mb-12" id="contact">
         <div className="bg-success-50 dark:bg-success-900/20 rounded-2xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold mb-4">Let's work together!</h2>
+          <h2 className="text-3xl font-bold mb-4">Let&#39;s work together!</h2>
           <p className="text-lg mb-6 max-w-2xl">
-            Interested in collaborating or have questions? Feel free to reach out.
+            Interested in collaborating or have questions? Feel free to reach
+            out.
           </p>
 
           <div className="flex flex-wrap gap-4">

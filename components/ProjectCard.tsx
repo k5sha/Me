@@ -21,63 +21,58 @@ export const ProjectCard = ({
   link,
   imageSrc,
   tags,
-  isComingSoon = false
+  isComingSoon = false,
 }: ProjectCardProps) => {
   return (
     <Card className="h-full hover:shadow-lg transition-shadow">
       <CardHeader className="flex gap-3">
         <Image
           alt={`${title} logo`}
+          className="object-contain"
           height={40}
           radius="sm"
           src={imageSrc}
           width={40}
-          className="object-contain"
         />
         <div className="flex flex-col">
           <p className="text-md font-semibold">{title}</p>
           <Link
+            isExternal
             className="text-small text-gray-500 dark:text-gray-400"
             href={link}
-            isExternal
           >
             {link.startsWith("http") ? new URL(link).hostname : link}
           </Link>
         </div>
       </CardHeader>
-      
+
       <Divider />
-      
+
       <CardBody>
         <p className="text-gray-600 dark:text-gray-300 mb-3">{description}</p>
-        
+
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <Chip 
-              key={tag.name} 
-              size="sm" 
-              variant="flat" 
+            <Chip
+              key={tag.name}
               color="success"
+              size="sm"
               startContent={tag.icon}
+              variant="flat"
             >
               {tag.name}
             </Chip>
           ))}
         </div>
       </CardBody>
-      
+
       <Divider />
-      
+
       <CardFooter>
         {isComingSoon ? (
           <p className="text-gray-500 italic">Coming soon</p>
         ) : (
-          <Link 
-            isExternal 
-            showAnchorIcon 
-            href={link}
-            color="success"
-          >
+          <Link isExternal showAnchorIcon color="success" href={link}>
             View Project
           </Link>
         )}

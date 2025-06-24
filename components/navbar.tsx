@@ -1,3 +1,6 @@
+import { siteConfig } from "@/config/site";
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -6,13 +9,10 @@ import {
   NavbarBrand,
   NavbarItem,
 } from "@heroui/navbar";
-import { Button } from "@heroui/button";
-import { Link } from "@heroui/link";
-import NextLink from "next/link";
 
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import { GithubIcon, HeartFilledIcon, LinkedInIcon } from "@/components/icons";
+import NextLink from "next/link";
+import { LinkedInIcon, GithubIcon, HeartFilledIcon } from "./icons";
+import { ThemeSwitch } from "./theme-switch";
 
 export const Navbar = () => {
   return (
@@ -21,7 +21,7 @@ export const Navbar = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <p className="font-bold text-inherit">Yurii Yevtushenko</p>
-            <span className="font-medium px-2 text-gray-500">
+            <span className="font-medium px-2 text-gray-500 hidden sm:inline">
               Golang backend developer
             </span>
           </NextLink>
@@ -60,12 +60,62 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
+
+      <NavbarMenu>
+        <div className="mx-4 mt-2 flex flex-col gap-2">
+          <NavbarItem>
+            <Link
+              color="foreground"
+              href="#skills"
+              size="lg"
+            >
+              Skills
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              color="foreground"
+              href="#projects"
+              size="lg"
+            >
+              Projects
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              color="foreground"
+              href="#experience"
+              size="lg"
+            >
+              Experience
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              color="foreground"
+              href="#contact"
+              size="lg"
+            >
+              Contact
+            </Link>
+          </NavbarItem>
+          <NavbarItem className="mt-4">
+            <Button
+              isExternal
+              as={Link}
+              className="w-full"
+              href={siteConfig.links.sponsor}
+              startContent={<HeartFilledIcon className="text-danger" />}
+              variant="flat"
+            >
+              Sponsor
+            </Button>
+          </NavbarItem>
+        </div>
+      </NavbarMenu>
     </HeroUINavbar>
   );
 };

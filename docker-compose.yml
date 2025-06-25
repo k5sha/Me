@@ -9,8 +9,8 @@ services:
       - "traefik.http.routers.nextjs.tls=true"
       - "traefik.http.routers.nextjs.tls.certresolver=letsEncrypt"
 
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       - "traefik.http.routers.redirs.rule=Host(`k5sha.xyz`) || Host(`www.k5sha.xyz`)"
-      - "traefik.http.routers.redirs.rule=hostregexp(`{host:.+}`)"
       - "traefik.http.routers.redirs.entrypoints=http"
       - "traefik.http.routers.redirs.middlewares=redirect-to-https"
     restart: always

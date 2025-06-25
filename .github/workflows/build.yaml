@@ -54,13 +54,9 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             set -e
             echo "📦 Pulling latest image..."
-            git pull
-            docker pull ghcr.io/k5sha/nextjs-frontend-portfolio:latest
-
-            echo "📄 Updating docker-compose.yml if needed (optional step)..."
 
             cd ~/Me
-
+            git pull
             echo "🚀 Restarting services..."
             docker compose down
             docker compose up -d

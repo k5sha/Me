@@ -4,13 +4,13 @@ services:
     container_name: portfolio
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nextjs.rule=Host(`k5sha.xyz`)"
+      - "traefik.http.routers.nextjs.rule=Host(`k5sha.xyz`, `www.k5sha.xyz`)"
       - "traefik.http.routers.nextjs.entrypoints=https"
       - "traefik.http.routers.nextjs.tls=true"
       - "traefik.http.routers.nextjs.tls.certresolver=letsEncrypt"
 
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.redirs.rule=hostregexp(`k5sha.xyz`)"
+      - "traefik.http.routers.redirs.rule=hostregexp(`{host:.+}`)"
       - "traefik.http.routers.redirs.entrypoints=http"
       - "traefik.http.routers.redirs.middlewares=redirect-to-https"
     restart: always

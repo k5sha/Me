@@ -3,7 +3,6 @@ services:
     image: ghcr.io/k5sha/nextjs-frontend-portfolio:latest
     container_name: portfolio
     labels:
-     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portfolio-web.rule=Host(`k5sha.xyz`) || Host(`www.k5sha.xyz`)"
       - "traefik.http.routers.portfolio-web.entrypoints=https"

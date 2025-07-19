@@ -4,15 +4,16 @@ services:
     container_name: portfolio
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nextjs.rule=Host(`k5sha.xyz`) || Host(`www.k5sha.xyz`)"
-      - "traefik.http.routers.nextjs.entrypoints=https"
-      - "traefik.http.routers.nextjs.tls=true"
-      - "traefik.http.routers.nextjs.tls.certresolver=letsEncrypt"
-
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.redirs.rule=Host(`k5sha.xyz`) || Host(`www.k5sha.xyz`)"
-      - "traefik.http.routers.redirs.entrypoints=http"
-      - "traefik.http.routers.redirs.middlewares=redirect-to-https"
+      - "traefik.http.routers.portfolio-web.rule=Host(`k5sha.xyz`) || Host(`www.k5sha.xyz`)"
+      - "traefik.http.routers.portfolio-web.entrypoints=https"
+      - "traefik.http.routers.portfolio-web.tls=true"
+      - "traefik.http.routers.portfolio-web.tls.certresolver=letsEncrypt"
+      - "traefik.http.middlewares.portfolio-redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.portfolio-redirect-to-https.redirectscheme.permanent=true"
+      - "traefik.http.routers.portfolio-redirect.rule=Host(`k5sha.xyz`) || Host(`www.k5sha.xyz`)"
+      - "traefik.http.routers.portfolio-redirect.entrypoints=http"
+      - "traefik.http.routers.portfolio-redirect.middlewares=portfolio-redirect-to-https"
+      - "traefik.http.routers.portfolio-redirect.priority=1"
     restart: always
     networks:
       - traefik_default

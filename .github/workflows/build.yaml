@@ -59,6 +59,7 @@ jobs:
             git pull
             echo "🚀 Restarting services..."
             docker compose down
+            docker compose pull
             docker compose up -d
 
             echo "✅ Deployment completed!"

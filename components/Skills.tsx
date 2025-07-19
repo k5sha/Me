@@ -21,6 +21,7 @@ export const Skills = () => {
             <span className="text-gray-500">{skill.level}%</span>
           </div>
           <Progress
+            aria-label={`${skill.name} proficiency is ${skill.level}%`}
             className="max-w-full"
             color="success"
             size="sm"

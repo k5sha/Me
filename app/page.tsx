@@ -112,11 +112,8 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               <div className="p-12 flex flex-col justify-center">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-indigo-500 flex items-center justify-center">
-                    <FiRadio
-                      aria-hidden="true"
-                      className="text-white text-xl"
-                    />
+                  <div className="w-12 h-12 p-2 rounded-lg bg-indigo-500 flex items-center justify-center">
+                    <FiRadio className="text-white text-xl" />
                   </div>
                   <h3 className="text-2xl font-bold">WebRoom</h3>
                   <Chip color="success">In progress</Chip>
@@ -177,7 +174,6 @@ export default function Home() {
                 <Image
                   alt="WebRoom interface screenshot"
                   className="rounded-xl shadow-2xl border border-gray-300 dark:border-gray-700"
-                  height={400}
                   src="./projects/webroom.png"
                 />
               </div>
@@ -255,7 +251,6 @@ export default function Home() {
                 <Image
                   alt="Ticketo interface screenshot"
                   className="rounded-xl shadow-2xl border border-gray-300 dark:border-gray-700"
-                  height={400}
                   src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1412&q=80"
                 />
               </div>
@@ -470,8 +465,6 @@ export default function Home() {
               <div className="bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-8">
                 <Image
                   alt="Portfolio website screenshot"
-                  className="rounded-xl shadow-2xl border border-gray-300 dark:border-gray-700"
-                  height={400}
                   src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                 />
               </div>

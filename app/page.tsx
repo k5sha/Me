@@ -17,6 +17,7 @@ import {
   FiArrowRight,
   FiVideo,
   FiRadio,
+  FiBook,
 } from "react-icons/fi";
 import { SiMedium } from "react-icons/si";
 import { FaAws, FaReact } from "react-icons/fa";
@@ -27,6 +28,7 @@ import { Image } from "@heroui/image";
 import { siteConfig } from "@/config/site";
 import { Skills } from "@/components/Skills";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
+import { MediumArticles } from "@/components/Articles";
 
 export default function Home() {
   return (
@@ -471,6 +473,15 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Articles Section */}
+      <section className="mb-24" id="articles">
+        <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2">
+          <FiBook aria-hidden="true" className="text-success-500" />
+          Recent <span className="text-success-500">Articles</span>
+        </h2>
+        <MediumArticles />
       </section>
 
       {/* Experience Section */}

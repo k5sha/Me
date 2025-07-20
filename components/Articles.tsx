@@ -207,10 +207,10 @@ function ArticleCard({ article }: { article: MediumArticle }) {
           <Image
             alt={article.title}
             className="rounded-xl shadow-xl"
-            fallbackSrc="https://github.com/golang-samples/gopher-vector/raw/master/gopher.png"
+            fallbackSrc="https://mailtrap.io/wp-content/uploads/2019/08/How-to-Send-and-Receive-Emails-with-Go_Featured-Image-520x270.png"
             src={
               article.thumbnail ||
-              "https://github.com/golang-samples/gopher-vector/raw/master/gopher.png"
+              "https://mailtrap.io/wp-content/uploads/2019/08/How-to-Send-and-Receive-Emails-with-Go_Featured-Image-520x270.png"
             }
           />
         </div>

@@ -7,6 +7,7 @@ import {
   NavbarMenuToggle,
   NavbarBrand,
   NavbarItem,
+  NavbarMenuItem,
 } from "@heroui/navbar";
 import NextLink from "next/link";
 
@@ -16,6 +17,15 @@ import { ThemeSwitch } from "./theme-switch";
 import { siteConfig } from "@/config/site";
 
 export const Navbar = () => {
+  const navItems = [
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
+    { name: "Articles", href: "#articles" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -27,6 +37,21 @@ export const Navbar = () => {
             </span>
           </NextLink>
         </NavbarBrand>
+
+        {/* Desktop Navigation Links */}
+        <ul className="hidden lg:flex gap-4 ml-8">
+          {navItems.map((item) => (
+            <NavbarItem key={item.href}>
+              <Link
+                color="foreground"
+                href={item.href}
+                className="hover:text-success-500 transition-colors"
+              >
+                {item.name}
+              </Link>
+            </NavbarItem>
+          ))}
+        </ul>
       </NavbarContent>
 
       <NavbarContent
@@ -40,13 +65,13 @@ export const Navbar = () => {
             href={siteConfig.links.linkedin}
           >
             <LinkedInIcon
-              className="text-default-500"
+              className="text-default-500 hover:text-success-500 transition-colors"
               size={20}
               viewBox={"0 0 16 16"}
             />
           </Link>
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
+            <GithubIcon className="text-default-500 hover:text-success-500 transition-colors" />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
@@ -54,7 +79,7 @@ export const Navbar = () => {
           <Button
             isExternal
             as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
+            className="text-sm font-normal text-default-600 bg-default-100 hover:bg-success-50"
             href={siteConfig.links.sponsor}
             startContent={<HeartFilledIcon className="text-danger" />}
             variant="flat"
@@ -71,27 +96,19 @@ export const Navbar = () => {
 
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          <NavbarItem>
-            <Link color="foreground" href="#skills" size="lg">
-              Skills
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#projects" size="lg">
-              Projects
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#experience" size="lg">
-              Experience
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#contact" size="lg">
-              Contact
-            </Link>
-          </NavbarItem>
-          <NavbarItem className="mt-4">
+          {navItems.map((item) => (
+            <NavbarMenuItem key={item.href}>
+              <Link
+                color="foreground"
+                href={item.href}
+                size="lg"
+                className="w-full hover:text-success-500"
+              >
+                {item.name}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+          <NavbarMenuItem className="mt-4">
             <Button
               isExternal
               as={Link}
@@ -102,7 +119,7 @@ export const Navbar = () => {
             >
               Sponsor
             </Button>
-          </NavbarItem>
+          </NavbarMenuItem>
         </div>
       </NavbarMenu>
     </HeroUINavbar>

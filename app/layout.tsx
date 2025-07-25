@@ -135,7 +135,7 @@ export default function RootLayout({
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
+            <footer className="w-full flex flex-col items-center justify-center py-3">
               <Link
                 isExternal
                 className="flex items-center gap-1 text-current"
@@ -146,6 +146,9 @@ export default function RootLayout({
                   © {new Date().getFullYear()} {siteConfig.name} | Portfolio
                 </span>
               </Link>
+              <span className="font-medium underline">
+                Build {siteConfig.buildID}
+              </span>
             </footer>
           </div>
         </Providers>

@@ -5,16 +5,16 @@ on:
     branches: [master]
 
 env:
-    REGISTRY: ghcr.io
-    IMAGE_NAME: ${{ github.repository }}
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
     name: 🔧 Build Docker Image
     runs-on: ubuntu-latest
     permissions:
-          contents: read
-          packages: write
+      contents: read
+      packages: write
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
@@ -31,11 +31,15 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{env.REGISTRY}}/${{ env.IMAGE_NAME }}
-          
+          tags: |
+            type=sha,format=short,prefix=
+
       - name: 🚀 Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}          
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            NEXT_PUBLIC_BUILD_VERSION=${{ steps.meta.outputs.tags }}

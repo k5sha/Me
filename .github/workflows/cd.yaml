@@ -46,7 +46,6 @@ jobs:
       - name: 🚀 Docker compose on server
         env:
           IMAGE_REF: ${{ steps.meta.outputs.tags }}
-          BUILD_VERSION: ${{ github.sha }}
         run: |
           docker --context remote compose -f docker-compose.yml up -d
 
@@ -61,5 +60,4 @@ jobs:
           echo "|------------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| 🐳 Image    | \`${{ steps.meta.outputs.tags }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| 🔀 Git SHA  | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🙋 Actor    | \`${{ github.actor }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🕒 Time     | \`$(date)\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🕒 Time     | \`$(date -u)\` |" >> $GITHUB_STEP_SUMMARY

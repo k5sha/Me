@@ -3,6 +3,9 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+ARG NEXT_PUBLIC_BUILD_VERSION
+ENV NEXT_PUBLIC_BUILD_VERSION=${NEXT_PUBLIC_BUILD_VERSION}
+
 # Copy and install dependencies
 COPY package*.json ./
 RUN npm install --legacy-peer-deps

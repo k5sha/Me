@@ -30,6 +30,7 @@ services:
       - traefik_default
     environment:
       - NODE_ENV=production
+      - NEXT_PUBLIC_BUILD_VERSION=${BUILD_VERSION}
 
 networks:
   traefik_default:

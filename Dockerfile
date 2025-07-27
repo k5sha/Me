@@ -1,9 +1,6 @@
 # Use official Node.js image
 FROM node:20-alpine AS builder
 
-ARG BUILD_VERSION
-ENV NEXT_PUBLIC_BUILD_VERSION=$BUILD_VERSION
-
 WORKDIR /app
 
 # Copy and install dependencies

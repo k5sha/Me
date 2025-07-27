@@ -3,21 +3,20 @@ name: 🚀 Continuous Delivery
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  
+
 on:
   workflow_run:
     workflows: ["⚙️ Continuous Integration"]
     types:
       - completed
-    
 
 jobs:
   deploy:
     name: 🚚 Deploy to VPS
     runs-on: ubuntu-latest
     permissions:
-        contents: read
-        packages: read
+      contents: read
+      packages: read
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
@@ -44,12 +43,23 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🚀 Docker compose
+      - name: 🚀 Docker compose on server
         env:
           IMAGE_REF: ${{ steps.meta.outputs.tags }}
-          BUILD_VERSION: $(git rev-parse --short ${{ github.sha }})
+          BUILD_VERSION: ${{ github.sha }}
         run: |
           docker --context remote compose -f docker-compose.yml up -d
 
-      - name: 🧹 Cleanup
+      - name: 🧹 Cleanup SSH
         run: rm -rf ~/.ssh
+
+      - name: 📜 Summary
+        run: |
+          echo "### ✅ Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Item       | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|------------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🐳 Image    | \`${{ steps.meta.outputs.tags }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔀 Git SHA  | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🙋 Actor    | \`${{ github.actor }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🕒 Time     | \`$(date)\` |" >> $GITHUB_STEP_SUMMARY

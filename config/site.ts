@@ -5,7 +5,7 @@ export const siteConfig = {
   name: "Yurii Yevtushenko",
   description:
     "👋 Hey there! I'm Yurii a full-stack developer specializing in modern web technologies",
-  buildID: process.env.NEXT_PUBLIC_BUILD_VERSION || "Error",
+  buildID: process.env.NEXT_PUBLIC_BUILD_VERSION || "Unknown",
   links: {
     github: "https://github.com/k5sha",
     linkedin: "https://www.linkedin.com/in/yurii-yevtushenko-730a502a5",

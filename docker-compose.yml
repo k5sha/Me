@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: ghcr.io/k5sha/nextjs-frontend-portfolio:latest
+    image: ${IMAGE_REF}
     container_name: portfolio
     labels:
       - "traefik.enable=true"

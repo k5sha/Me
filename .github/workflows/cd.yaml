@@ -52,13 +52,10 @@ jobs:
           docker --context remote compose -f docker-compose.yml pull
           docker --context remote compose -f docker-compose.yml up -d
 
-      - name: 🧹 Cleanup
+      - name: 🧹 Cleanup and summary
         run: |
           docker --context remote system prune -f -a
           rm -rf ~/.ssh
-
-      - name: 📜 Summary
-        run: |
           echo "### ✅ Deployment Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Item       | Value |" >> $GITHUB_STEP_SUMMARY

@@ -42,4 +42,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            NEXT_PUBLIC_BUILD_VERSION=${{ steps.meta.outputs.tags }}
+            NEXT_PUBLIC_BUILD_VERSION=${{ steps.meta.outputs.labels.version }}

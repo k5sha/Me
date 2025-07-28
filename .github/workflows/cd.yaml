@@ -55,7 +55,7 @@ jobs:
 
       - name: 🧹 Cleanup and summary
         run: |
-          docker --context remote system prune -f -a
+          docker --context remote system prune -f --filter "until=72h"
           rm -rf ~/.ssh
           echo "### ✅ Deployment Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY

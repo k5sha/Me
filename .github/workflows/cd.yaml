@@ -5,10 +5,9 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 on:
-  workflow_run:
-    workflows: ["⚙️ Continuous Integration"]
+  registry_package:
     types:
-      - completed
+      - published
 
 jobs:
   deploy:

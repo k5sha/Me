@@ -146,9 +146,16 @@ export default function RootLayout({
                   © {new Date().getFullYear()} {siteConfig.name} | Portfolio
                 </span>
               </Link>
-              <span className="font-medium underline">
-                Build {siteConfig.buildID}
-              </span>
+              <Link
+                isExternal
+                className="flex items-center gap-1 text-current"
+                href="https://github.com/k5sha/Me"
+                title={`Github Repository for ${siteConfig.name}`}
+              >
+                <span className="font-medium underline">
+                  Build {siteConfig.buildID}
+                </span>
+              </Link>
             </footer>
           </div>
         </Providers>

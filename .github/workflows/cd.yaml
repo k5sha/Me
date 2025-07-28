@@ -5,13 +5,15 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 on:
-  registry_package:
+  workflow_run:
+    workflows: ["⚙️ Continuous Integration"]
     types:
-      - published
+      - completed
 
 jobs:
   deploy:
     name: 🚚 Deploy to VPS
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read

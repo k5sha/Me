@@ -1,53 +1,54 @@
-# Next.js & HeroUI Template
+<div align="center">
+  <h1>🚀 Portfolio Template</h1>
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+  <a href="https://k5sha.xyz">
+    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fk5sha.xyz&style=for-the-badge" />
+  </a>
+  <a href="https://nextjs.org/">
+    <img alt="Next.js" src="https://img.shields.io/badge/Next.js-black?logo=next.js&style=for-the-badge" />
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white&style=for-the-badge" />
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&style=for-the-badge" />
+  </a>
+  <a href="LICENSE">
+    <img alt="MIT License" src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" />
+  </a>
+</div>
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+## 🖼️ Screenshots
 
-## Technologies Used
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/abbdbbc2-f33d-4411-97b1-f9fbcb3e7b94" alt="Screenshot 1" width="90%" />
+  <br /><br />
+  <img src="https://github.com/user-attachments/assets/bccd8c95-80b7-45d2-98a4-90443816cd3e" alt="Screenshot 2" width="45%" />
+  <img src="https://github.com/user-attachments/assets/04fbf0f9-0725-4cd6-ad7e-edf490a52270" alt="Screenshot 3" width="45%" />
+</div>
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
 
-## How to Use
+## 🔗 Live Demo
 
-### Use the template with create-next-app
+👉 **[View the live site here](https://k5sha.xyz/)**
 
-To create a new project based on this template using `create-next-app`, run the following command:
+## 🔧 Built With
 
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
-```
+- **Next.js** & **React** — modern frontend framework  
+- **Tailwind CSS** & **HeroUI** — utility-first styling  
+- **TypeScript** — safer and more scalable JavaScript  
 
-### Install dependencies
+---
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+## ✨ Features
 
-```bash
-npm install
-```
+- Clean, minimal design  
+- Responsive layout for all devices  
+- Project showcase  
+- Contact and social links  
 
-### Run the development server
+---
 
-```bash
-npm run dev
-```
+## 📫 Contact
 
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+Feel free to reach out via [email](mailto:yurri.yevtushenko.work@gmail.com) or through my socials listed on the site.

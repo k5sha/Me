@@ -13,6 +13,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   ci:
     uses: ./.github/workflows/ci.yaml
@@ -21,9 +25,6 @@ jobs:
     name: 🚚 Deploy to VPS
     needs: ci
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4

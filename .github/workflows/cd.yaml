@@ -1,19 +1,25 @@
-name: 🚀 Continuous Delivery
+name: "🚀 Continuous Delivery (CD)"
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 on:
-  workflow_run:
-    workflows: ["⚙️ Continuous Integration"]
-    types:
-      - completed
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  ci:
+    uses: ./.github/workflows/ci.yaml
+
   deploy:
     name: 🚚 Deploy to VPS
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: ci
     runs-on: ubuntu-latest
     permissions:
       contents: read

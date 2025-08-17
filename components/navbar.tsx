@@ -12,7 +12,7 @@ import {
 import NextLink from "next/link";
 
 import { LinkedInIcon, GithubIcon, HeartFilledIcon } from "./icons";
-import { ThemeSwitch } from "./theme-switch";
+import { ThemeSwitch } from "./ThemeSwitch";
 
 import { siteConfig } from "@/config/site";
 
@@ -45,7 +45,7 @@ export const Navbar = () => {
               <Link
                 color="foreground"
                 href={item.href}
-                className="hover:text-success-500 transition-colors"
+                className="hover:text-primary-500 transition-colors"
               >
                 {item.name}
               </Link>
@@ -65,13 +65,13 @@ export const Navbar = () => {
             href={siteConfig.links.linkedin}
           >
             <LinkedInIcon
-              className="text-default-500 hover:text-success-500 transition-colors"
+              className="text-default-500 hover:text-primary-500 transition-colors"
               size={20}
               viewBox={"0 0 16 16"}
             />
           </Link>
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500 hover:text-success-500 transition-colors" />
+            <GithubIcon className="text-default-500 hover:text-primary-500 transition-colors" />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
@@ -79,7 +79,7 @@ export const Navbar = () => {
           <Button
             isExternal
             as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100 hover:bg-success-50"
+            className="text-sm font-normal text-default-600 bg-default-100 hover:bg-primary-50"
             href={siteConfig.links.sponsor}
             startContent={<HeartFilledIcon className="text-danger" />}
             variant="flat"
@@ -102,7 +102,7 @@ export const Navbar = () => {
                 color="foreground"
                 href={item.href}
                 size="lg"
-                className="w-full hover:text-success-500"
+                className="w-full hover:text-primary-500"
               >
                 {item.name}
               </Link>

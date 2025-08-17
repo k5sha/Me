@@ -91,7 +91,7 @@ export function MediumArticles() {
         <p className="text-red-500 mb-4">{error}</p>
         <Button
           as={Link}
-          color="success"
+          color="primary"
           endContent={<FiExternalLink />}
           href="https://medium.com/@k5sha"
           rel="noopener noreferrer"
@@ -113,7 +113,7 @@ export function MediumArticles() {
         </p>
         <Button
           as={Link}
-          color="success"
+          color="primary"
           endContent={<FiExternalLink />}
           href="https://medium.com/@k5sha"
           rel="noopener noreferrer"
@@ -193,7 +193,7 @@ function ArticleCard({ article }: { article: MediumArticle }) {
           <Button
             as={Link}
             className="mt-6 w-fit"
-            color="success"
+            color="primary"
             endContent={<FiExternalLink />}
             href={article.link}
             rel="noopener noreferrer"

@@ -23,7 +23,7 @@ export const Skills = () => {
           <Progress
             aria-label={`${skill.name} proficiency is ${skill.level}%`}
             className="max-w-full"
-            color="success"
+            color="primary"
             size="sm"
             value={skill.level}
           />

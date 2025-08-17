@@ -23,13 +23,13 @@ export const ExperienceTimeline = () => {
   return (
     <div className="relative">
       {/* Timeline line */}
-      <div className="absolute left-4 h-full w-0.5 bg-success-200 dark:bg-success-800" />
+      <div className="absolute left-4 h-full w-0.5 bg-primary-200 dark:bg-primary-800" />
 
       <div className="space-y-8">
         {experiences.map((exp, index) => (
           <div key={index} className="relative pl-12">
             {/* Timeline dot */}
-            <div className="absolute left-0 w-8 h-8 rounded-full bg-success-500 border-4 border-white dark:border-gray-900 flex items-center justify-center">
+            <div className="absolute left-0 w-8 h-8 rounded-full bg-primary-500 border-4 border-white dark:border-gray-900 flex items-center justify-center">
               <div className="w-2 h-2 rounded-full bg-white" />
             </div>
 

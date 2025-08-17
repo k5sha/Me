@@ -37,7 +37,7 @@ export default function Home() {
       <section className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24">
         <div className="flex-1 space-y-6">
           <Chip
-            color="success"
+            color="primary"
             startContent={
               <FiUserCheck aria-hidden="true" className="text-lg" />
             }
@@ -47,10 +47,10 @@ export default function Home() {
           </Chip>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
             Hi, I&#39;m Yurii Yevtushenko
-            <span className="text-success-500">.</span>
+            <span className="text-primary-500">.</span>
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 flex items-center gap-2">
-            <FiCode aria-hidden="true" className="text-success-500" />
+            <FiCode aria-hidden="true" className="text-primary-500" />
             Full-stack Developer & DevOps Enthusiast
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
@@ -62,7 +62,7 @@ export default function Home() {
             <Button
               aria-label="Contact me via email"
               as={Link}
-              color="success"
+              color="primary"
               endContent={<FiMail aria-hidden="true" size={18} />}
               href="#contact"
               variant="solid"
@@ -85,7 +85,7 @@ export default function Home() {
           isBordered
           alt="Yurii Yevtushenko's profile photo"
           className="w-48 h-48 md:w-64 md:h-64 text-large"
-          color="success"
+          color="primary"
           src="https://avatars.githubusercontent.com/u/65705493?v=4"
         />
       </section>
@@ -93,8 +93,11 @@ export default function Home() {
       {/* Skills Section */}
       <section className="mb-24" id="skills">
         <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2">
-          <FiAward aria-hidden="true" className="text-success-500" />
-          My <span className="text-success-500">Skills</span>
+          <FiAward aria-hidden="true" className="text-primary-500" />
+          My{" "}
+          <span className="text-primary-500" color="primary">
+            Skills
+          </span>
         </h2>
         <Skills />
       </section>
@@ -103,8 +106,8 @@ export default function Home() {
       <section className="mb-24" id="projects">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold flex items-center gap-2">
-            <FiCode aria-hidden="true" className="text-success-500" />
-            Featured <span className="text-success-500">Projects</span>
+            <FiCode aria-hidden="true" className="text-primary-500" />
+            Featured <span className="text-primary-500">Projects</span>
           </h2>
         </div>
 
@@ -139,7 +142,7 @@ export default function Home() {
                     { title: "Pomodoro Timer", desc: "Built-in productivity" },
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div aria-hidden="true" className="text-success-500 mt-1">
+                      <div aria-hidden="true" className="text-primary-500 mt-1">
                         <FiArrowRight />
                       </div>
                       <div>
@@ -154,7 +157,7 @@ export default function Home() {
                   <Button
                     aria-label="View WebRoom live demo"
                     as={Link}
-                    color="success"
+                    color="primary"
                     endContent={<FiVideo aria-hidden="true" size={16} />}
                     href="https://webroom.k5sha.xyz/demo"
                     variant="solid"
@@ -231,7 +234,7 @@ export default function Home() {
                   <Button
                     aria-label="View Ticketo project"
                     as={Link}
-                    color="success"
+                    color="primary"
                     endContent={<FiExternalLink aria-hidden="true" size={16} />}
                     href={siteConfig.links.ticketo}
                     variant="solid"
@@ -295,7 +298,7 @@ export default function Home() {
                     },
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div aria-hidden="true" className="text-success-500 mt-1">
+                      <div aria-hidden="true" className="text-primary-500 mt-1">
                         <FiArrowRight />
                       </div>
                       <div>
@@ -327,7 +330,7 @@ export default function Home() {
                   <Button
                     aria-label="View Noti.u on Chrome Web Store"
                     as={Link}
-                    color="success"
+                    color="primary"
                     endContent={<FiExternalLink aria-hidden="true" size={16} />}
                     href={siteConfig.links.noti_u}
                     variant="solid"
@@ -427,7 +430,7 @@ export default function Home() {
                       name: "Tailwind",
                     },
                     {
-                      icon: <span className="text-success-500">H</span>,
+                      icon: <span className="text-primary-500">H</span>,
                       name: "HeroUI",
                     },
                   ].map((tech, index) => (
@@ -446,7 +449,7 @@ export default function Home() {
                   <Button
                     aria-label="View live portfolio"
                     as={Link}
-                    color="success"
+                    color="primary"
                     endContent={<FiExternalLink aria-hidden="true" size={16} />}
                     href="/"
                     variant="solid"
@@ -478,8 +481,8 @@ export default function Home() {
       {/* Articles Section */}
       <section className="mb-24" id="articles">
         <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2">
-          <FiBook aria-hidden="true" className="text-success-500" />
-          Recent <span className="text-success-500">Articles</span>
+          <FiBook aria-hidden="true" className="text-primary-500" />
+          Recent <span className="text-primary-500">Articles</span>
         </h2>
         <MediumArticles />
       </section>
@@ -487,15 +490,15 @@ export default function Home() {
       {/* Experience Section */}
       <section className="mb-24" id="experience">
         <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2">
-          <FiBriefcase aria-hidden="true" className="text-success-500" />
-          Work <span className="text-success-500">Experience</span>
+          <FiBriefcase aria-hidden="true" className="text-primary-500" />
+          Work <span className="text-primary-500">Experience</span>
         </h2>
         <ExperienceTimeline />
       </section>
 
       {/* Contact Section */}
       <section className="mb-12" id="contact">
-        <div className="bg-success-50 dark:bg-success-900/20 rounded-2xl p-8 md:p-12">
+        <div className="bg-primary-50 dark:bg-primary-900/20 rounded-2xl p-8 md:p-12">
           <h2 className="text-3xl font-bold mb-4">Let&#39;s work together!</h2>
           <p className="text-lg mb-6 max-w-2xl">
             Interested in collaborating or have questions? Feel free to reach
@@ -506,7 +509,7 @@ export default function Home() {
             <Button
               aria-label="Contact me via email"
               as={Link}
-              color="success"
+              color="primary"
               endContent={<FiMail aria-hidden="true" size={20} />}
               href={`mailto:${siteConfig.links.email}`}
               size="lg"
@@ -524,7 +527,7 @@ export default function Home() {
                 >
                   <FiGithub
                     aria-hidden="true"
-                    className="text-gray-700 dark:text-gray-300 hover:text-success-500 text-2xl"
+                    className="text-gray-700 dark:text-gray-300 hover:text-primary-500 text-2xl"
                   />
                 </Link>
               </Tooltip>
@@ -537,7 +540,7 @@ export default function Home() {
                 >
                   <FiLinkedin
                     aria-hidden="true"
-                    className="text-gray-700 dark:text-gray-300 hover:text-success-500 text-2xl"
+                    className="text-gray-700 dark:text-gray-300 hover:text-primary-500 text-2xl"
                   />
                 </Link>
               </Tooltip>
@@ -550,7 +553,7 @@ export default function Home() {
                 >
                   <SiMedium
                     aria-hidden="true"
-                    className="text-gray-700 dark:text-gray-300 hover:text-success-500 text-2xl"
+                    className="text-gray-700 dark:text-gray-300 hover:text-primary-500 text-2xl"
                   />
                 </Link>
               </Tooltip>

@@ -39,7 +39,7 @@ export default function Home() {
           <Chip
             color="primary"
             startContent={
-              <FiUserCheck aria-hidden="true" className="text-lg" />
+              <FiUserCheck aria-hidden="true" className="text-lg ps-1" />
             }
             variant="flat"
           >

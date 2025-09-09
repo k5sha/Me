@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 
 import { openGraph, robots, siteConfig, twitter } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/Navbar";
+import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {

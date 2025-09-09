@@ -1,14 +1,14 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
 import clsx from "clsx";
 import Script from "next/script";
 
 import { Providers } from "./providers";
 
-import { siteConfig } from "@/config/site";
+import { openGraph, robots, siteConfig, twitter } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -16,62 +16,17 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Full-Stack Developer",
-    "Portfolio",
-    "Web Development",
-    "React",
-    "Next.js",
-    "DevOps",
-    siteConfig.name,
-  ],
+  keywords: siteConfig.keywords,
   metadataBase: new URL(siteConfig.url),
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: `${siteConfig.name} | Professional Portfolio`,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: `${siteConfig.url}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} Portfolio Preview`,
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.name} | Full-Stack Developer`,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og-image.jpg`],
-    creator: "@yourtwitterhandle",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  openGraph: openGraph,
+  twitter: twitter,
+  robots: robots,
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-  verification: {
-    google: "your-google-verification-code",
-  },
 };
 
 export const viewport: Viewport = {
@@ -119,6 +74,7 @@ export default function RootLayout({
           content="black-translucent"
           name="apple-mobile-web-app-status-bar-style"
         />
+
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           type="application/ld+json"
@@ -129,6 +85,7 @@ export default function RootLayout({
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-GF9CC589XW"
         />
+
         <Script id="google-analytics">
           {`
            window.dataLayer = window.dataLayer || [];
@@ -151,28 +108,7 @@ export default function RootLayout({
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
               {children}
             </main>
-            <footer className="w-full flex flex-col items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="/"
-                title={`${siteConfig.name} Portfolio`}
-              >
-                <span className="text-default-600">
-                  © {new Date().getFullYear()} {siteConfig.name} | Portfolio
-                </span>
-              </Link>
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://github.com/k5sha/Me"
-                title={`Github Repository for ${siteConfig.name}`}
-              >
-                <span className="font-medium underline">
-                  Build {siteConfig.buildID}
-                </span>
-              </Link>
-            </footer>
+            <Footer />
           </div>
         </Providers>
       </body>

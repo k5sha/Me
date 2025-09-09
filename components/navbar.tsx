@@ -10,8 +10,9 @@ import {
   NavbarMenuItem,
 } from "@heroui/navbar";
 import NextLink from "next/link";
+import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
+import { GoHeartFill } from "react-icons/go";
 
-import { LinkedInIcon, GithubIcon, HeartFilledIcon } from "./icons";
 import { ThemeSwitch } from "./ThemeSwitch";
 
 import { siteConfig } from "@/config/site";
@@ -43,9 +44,9 @@ export const Navbar = () => {
           {navItems.map((item) => (
             <NavbarItem key={item.href}>
               <Link
+                className="hover:text-primary-500 transition-colors"
                 color="foreground"
                 href={item.href}
-                className="hover:text-primary-500 transition-colors"
               >
                 {item.name}
               </Link>
@@ -64,14 +65,16 @@ export const Navbar = () => {
             aria-label="LinkedIn"
             href={siteConfig.links.linkedin}
           >
-            <LinkedInIcon
+            <IoLogoLinkedin
               className="text-default-500 hover:text-primary-500 transition-colors"
-              size={20}
-              viewBox={"0 0 16 16"}
+              size={28}
             />
           </Link>
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500 hover:text-primary-500 transition-colors" />
+            <IoLogoGithub
+              className="text-default-500 hover:text-primary-500 transition-colors"
+              size={26}
+            />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
@@ -81,7 +84,7 @@ export const Navbar = () => {
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100 hover:bg-primary-50"
             href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
+            startContent={<GoHeartFill className="text-danger" size={22} />}
             variant="flat"
           >
             Sponsor
@@ -99,10 +102,10 @@ export const Navbar = () => {
           {navItems.map((item) => (
             <NavbarMenuItem key={item.href}>
               <Link
+                className="w-full hover:text-primary-500"
                 color="foreground"
                 href={item.href}
                 size="lg"
-                className="w-full hover:text-primary-500"
               >
                 {item.name}
               </Link>
@@ -114,7 +117,7 @@ export const Navbar = () => {
               as={Link}
               className="w-full"
               href={siteConfig.links.sponsor}
-              startContent={<HeartFilledIcon className="text-danger" />}
+              startContent={<GoHeartFill className="text-danger" size={22} />}
               variant="flat"
             >
               Sponsor

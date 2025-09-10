@@ -19,6 +19,9 @@ export const siteConfig = {
     "DevOps",
     "Yurii Yevtushenko",
     "My portfolio",
+    "Юрій Євтушенко",
+    "Розробка",
+    "Бекенд"
   ],
   buildID: process.env.NEXT_PUBLIC_BUILD_VERSION || "Unknown",
   links: {

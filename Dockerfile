@@ -1,31 +1,23 @@
-# Use official Node.js image
 FROM node:20-alpine AS builder
-
 WORKDIR /app
 
 ARG NEXT_PUBLIC_BUILD_VERSION
 ENV NEXT_PUBLIC_BUILD_VERSION=${NEXT_PUBLIC_BUILD_VERSION}
 
-# Copy and install dependencies
 COPY package*.json ./
-RUN npm install --legacy-peer-deps
+RUN npm ci --legacy-peer-deps
 
-# Copy the rest of the code and build
 COPY . .
+
 RUN npm run build
 
-# Production image
-FROM node:20-alpine
-
+FROM node:20-alpine AS runner
 WORKDIR /app
 
+COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/.next/static ./.next/static
 
-# Expose the port Next.js runs on
 EXPOSE 3000
 
-# Start the app
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

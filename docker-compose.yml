@@ -27,10 +27,10 @@ services:
       - "traefik.http.middlewares.redirect-www-to-root.redirectregex.permanent=true"
     restart: always
     networks:
-      - traefik_default
+      - traefik_network
     environment:
       - NODE_ENV=production
 
 networks:
-  traefik_default:
+  traefik_network:
     external: true

@@ -1,12 +1,9 @@
 name: "🛡️ Security and Quality Checks"
 
 on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+  workflow_call:
   workflow_dispatch:
-
+  
 permissions:
   contents: read
   security-events: write

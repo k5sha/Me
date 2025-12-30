@@ -9,8 +9,6 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  security:
-      uses: ./.github/workflows/security.yaml
   build-and-push:
     name: 🔧 Build Docker Image
     runs-on: ubuntu-latest

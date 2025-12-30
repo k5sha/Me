@@ -186,6 +186,106 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Project: ZipZip */}
+        <div className="mb-32">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              <div className="p-12 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 p-2 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-8 h-8"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.5"
+                        d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002-2h14a2 2 0 002-2V8m-9 4h4"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold">ZipZip</h3>
+                  <Chip color="success">Live</Chip>
+                </div>
+                <h4 className="text-xl text-gray-600 dark:text-gray-300 mb-4">
+                  Secure Online Archiver & Extractor
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  A high-performance online tool for managing ZIP, RAR, and 7z
+                  archives. Built with WebAssembly for 100% client-side
+                  processing, ensuring that no files are ever uploaded to a
+                  server.
+                </p>
+
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  {[
+                    {
+                      title: "Privacy First",
+                      desc: "No file uploads to server",
+                    },
+                    { title: "Format Support", desc: "ZIP, RAR, 7z & more" },
+                    { title: "Client-side", desc: "Fast WASM processing" },
+                    { title: "Cross-platform", desc: "Mobile & Desktop ready" },
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <div aria-hidden="true" className="text-primary-500 mt-1">
+                        <FiArrowRight />
+                      </div>
+                      <div>
+                        <h5 className="font-medium">{item.title}</h5>
+                        <p className="text-sm text-gray-500">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {["Astro", "WebAssembly", "Tailwind CSS", "TypeScript"].map(
+                    (tech, index) => (
+                      <Chip key={index} variant="flat">
+                        {tech}
+                      </Chip>
+                    )
+                  )}
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <Button
+                    aria-label="View ZipZip live demo"
+                    as={Link}
+                    color="primary"
+                    endContent={<FiVideo aria-hidden="true" size={16} />}
+                    href="https://zipzip.online/"
+                    variant="solid"
+                  >
+                    Live Demo
+                  </Button>
+                  <Button
+                    aria-label="Visit ZipZip website"
+                    as={Link}
+                    endContent={<FiExternalLink aria-hidden="true" size={16} />}
+                    href="https://zipzip.online/"
+                    variant="bordered"
+                  >
+                    View site
+                  </Button>
+                </div>
+              </div>
+              <div className="bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-8">
+                <Image
+                  alt="ZipZip online archiver screenshot"
+                  className="rounded-xl shadow-2xl border border-gray-300 dark:border-gray-700 object-cover"
+                  src="https://www.zipzip.online/og-image.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Project 2 - Ticketo */}
         <div className="mb-32">
           <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden">

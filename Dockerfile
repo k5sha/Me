@@ -5,8 +5,8 @@ ARG NEXT_PUBLIC_BUILD_VERSION
 ENV NEXT_PUBLIC_BUILD_VERSION=${NEXT_PUBLIC_BUILD_VERSION}
 
 COPY package*.json ./
-RUN npm audit fix --legacy-peer-deps
-RUN npm ci --legacy-peer-deps
+RUN npm audit fix --force
+RUN npm ci --force
 
 COPY . .
 

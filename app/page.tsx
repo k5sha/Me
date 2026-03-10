@@ -98,7 +98,8 @@ return (
       </h2>
     </div>
 
-    <!-- {/* Project 1 - WebRoom */}
+{/* Project 1 - WebRoom */}
+     {/* 
     <div className="mb-32">
       <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
@@ -164,7 +165,8 @@ return (
           </div>
         </div>
       </div>
-    </div> -->
+    </div> 
+    */}
 
     {/* Project: ZipZip */}
     <div className="mb-32">

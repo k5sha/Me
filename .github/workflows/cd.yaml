@@ -6,7 +6,7 @@ on:
     types:
       - completed
     branches:
-      - main
+      - master
 
 env:
   INFRA_REPO: "k5sha/k5sha-gitops"

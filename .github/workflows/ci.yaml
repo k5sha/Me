@@ -1,8 +1,13 @@
 name: "🩺 Continuous Integration (CI)"
 
 on:
-  workflow_call:
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
   workflow_dispatch:
+  workflow_call:
 
 env:
   REGISTRY: ghcr.io
@@ -10,11 +15,13 @@ env:
 
 jobs:
   build-and-push:
-    name: 🔧 Build Docker Image
+    name: 🔧 Build & Scan Image
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+      security-events: write
+
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
@@ -26,18 +33,21 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🤖 Extract metadata (tags, labels) for Docker
+      - name: 🤖 Extract metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{env.REGISTRY}}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=sha,format=short,prefix=
+            type=ref,event=branch
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
       - name: ⚙️ Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: 🚀 Build and push
+        id: build
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -46,5 +56,16 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: false 
           build-args: |
-            NEXT_PUBLIC_BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            NEXT_PUBLIC_BUILD_VERSION=${{ steps.meta.outputs.version }}
+
+      - name: 🛡️ Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'

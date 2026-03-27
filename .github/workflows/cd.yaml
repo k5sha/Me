@@ -1,87 +1,59 @@
 name: "🚀 Continuous Delivery (CD)"
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
 on:
-  workflow_dispatch:
-  push:
-    branches: [master]
-    paths:
-      - "app/**"
-      - "components/**"
-      - "config/**"
-      - "public/**"
-      - "styles/**"
-      - "next.config.js"
-      - "tailwind.config.js"
-      - "postcss.config.js"
-      - "tsconfig.json"
-      - "package.json"
-      - "package-lock.json"
+  workflow_run:
+    workflows: ["🩺 Continuous Integration (CI)"]
+    types:
+      - completed
+    branches:
+      - main
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-permissions:
-  contents: read
-  packages: write
-  security-events: write
-  pull-requests: write
+env:
+  INFRA_REPO: "k5sha/k5sha-gitops"
+  MANIFEST_PATH: "manifests/portfolio"
+  REGISTRY: "ghcr.io"
 
 jobs:
-  ci:
-    uses: ./.github/workflows/ci.yaml
-
-  deploy:
-    name: 🚚 Deploy to VPS
-    needs: ci
+  update-manifest:
+    name: 🔄 Update Kubernetes Manifest
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
     steps:
-      - name: 📥 Checkout repository
+      - name: 📥 Checkout Infra Repository
         uses: actions/checkout@v4
-        env:
-          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🔑 Set up SSH access
-        run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.VPS_HOST }} > ~/.ssh/known_hosts
-          docker context create remote --docker host=ssh://${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}
-
-      - name: 🤖 Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=sha,format=short,prefix=
+          repository: ${{ env.INFRA_REPO }}
+          token: ${{ secrets.INFRA_REPO_TOKEN }}
+          path: infra-repo
 
-      - name: ⚙️ Log in to the Container registry
-        uses: docker/login-action@v3.0.0
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🚀 Docker compose on server
-        env:
-          IMAGE_REF: ${{ steps.meta.outputs.tags }}
+      - name: 🤖 Extract short SHA
+        id: vars
         run: |
-          docker --context remote compose -f docker-compose.yml pull
-          docker --context remote compose -f docker-compose.yml up -d
+          echo "sha_short=$(echo ${{ github.event.workflow_run.head_sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
 
-      - name: 🧹 Cleanup and summary
+      - name: 🔧 Update Image Tag in Deployment
         run: |
-          docker --context remote system prune -f --filter "until=72h"
-          rm -rf ~/.ssh
-          echo "### ✅ Deployment Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Item       | Value |" >> $GITHUB_STEP_SUMMARY
-          echo "|------------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| 🐳 Image    | \`${{ steps.meta.outputs.tags }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔀 Git SHA  | \`${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🕒 Time     | \`$(date -u)\` |" >> $GITHUB_STEP_SUMMARY
+          cd infra-repo/${{ env.MANIFEST_PATH }}
+          
+          IMAGE_FULL_PATH="${{ env.REGISTRY }}/${{ github.repository }}"
+          NEW_TAG="${{ steps.vars.outputs.sha_short }}"
+          
+          echo "Updating image to: ${IMAGE_FULL_PATH}:${NEW_TAG}"
+          
+          sed -i "s|image: ${IMAGE_FULL_PATH}:.*|image: ${IMAGE_FULL_PATH}:${NEW_TAG}|g" deployment.yaml
+
+      - name: 🚀 Commit and Push to Infra Repo
+        run: |
+          cd infra-repo
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          
+          git add ${{ env.MANIFEST_PATH }}/deployment.yaml
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore(cd): update image for ${{ github.event.repository.name }} to ${{ steps.vars.outputs.sha_short }}"
+            git push
+          fi

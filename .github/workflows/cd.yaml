@@ -6,7 +6,7 @@ on:
     types:
       - completed
     branches:
-      - master
+      - main
 
 env:
   INFRA_REPO: "k5sha/k5sha-gitops"
@@ -36,7 +36,8 @@ jobs:
         run: |
           cd infra-repo/${{ env.MANIFEST_PATH }}
           
-          IMAGE_FULL_PATH="${{ env.REGISTRY }}/${{ github.repository }}"
+          REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE_FULL_PATH="${{ env.REGISTRY }}/${REPO_LOWER}"
           NEW_TAG="${{ steps.vars.outputs.sha_short }}"
           
           echo "Updating image to: ${IMAGE_FULL_PATH}:${NEW_TAG}"

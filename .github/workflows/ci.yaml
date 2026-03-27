@@ -2,25 +2,56 @@ name: "🩺 Continuous Integration (CI)"
 
 on:
   push:
-    branches: ["master"]
-    paths-ignore:
-      - "**.md"
-      - "docs/**"
+    branches: ["main"]
   workflow_dispatch:
-  workflow_call:
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  pre-build-check:
+      name: 🔍 Pre-Build Security & Quality
+      runs-on: ubuntu-latest
+      steps:
+        - name: 📥 Checkout repository
+          uses: actions/checkout@v4
+
+        - name: 🐳 Lint Dockerfile
+          uses: hadolint/hadolint-action@v3.1.0
+          with:
+            dockerfile: Dockerfile
+
+        - name: 🛡️ Scan FS for Secrets and Configs
+          uses: aquasecurity/trivy-action@master
+          with:
+            scan-type: 'fs'
+            scan-ref: '.'
+            scanners: 'vuln,secret,config' 
+            hide-progress: true
+            format: 'table'
+            exit-code: '1' 
+            severity: 'CRITICAL,HIGH'
+
+        - name: 🏗️ Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 22
+            cache: 'npm'
+
+        - name: 📦 Install dependencies
+          run: npm ci --force
+
+        - name: 🧹 Lint Check
+          run: npm run lint
+
   build-and-push:
-    name: 🔧 Build & Scan Image
+    name: 🔧 Build & Push Image
+    needs: pre-build-check 
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-      security-events: write
 
     steps:
       - name: 📥 Checkout repository
@@ -40,32 +71,15 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=sha,format=short,prefix=
-            type=ref,event=branch
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
       - name: ⚙️ Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: 🚀 Build and push
-        id: build
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          provenance: false 
-          build-args: |
-            NEXT_PUBLIC_BUILD_VERSION=${{ steps.meta.outputs.version }}
-
-      - name: 🛡️ Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
-          format: 'table'
-          exit-code: '0'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'

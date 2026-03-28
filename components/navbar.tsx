@@ -34,7 +34,7 @@ export const Navbar = () => {
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <p className="font-bold text-inherit">Yurii Yevtushenko</p>
             <span className="font-medium px-2 text-gray-500 hidden sm:inline">
-              Golang backend developer
+              Cloud & DevOps Engineer
             </span>
           </NextLink>
         </NavbarBrand>

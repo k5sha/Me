@@ -11,16 +11,15 @@ import {
   FiMail,
   FiExternalLink,
   FiAward,
-  FiCode,
   FiBriefcase,
   FiUserCheck,
   FiArrowRight,
   FiVideo,
-  FiRadio,
   FiBook,
   FiServer,
   FiCloud,
   FiDownload,
+  FiCpu,
 } from "react-icons/fi";
 import { SiMedium } from "react-icons/si";
 import { FaAws, FaReact } from "react-icons/fa";
@@ -31,7 +30,6 @@ import {
   SiKubernetes,
   SiTerraform,
   SiDocker,
-  SiGithubactions,
 } from "react-icons/si";
 import { IoIosNotifications } from "react-icons/io";
 import { Image } from "@heroui/image";
@@ -131,7 +129,7 @@ export default function Home() {
           </h2>
         </div>
 
-        {/* Project 1 - GitOps Cluster */}
+        {/* Project 0 - GitOps Cluster */}
         <div className="mb-32">
           <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
@@ -159,7 +157,7 @@ export default function Home() {
                       title: "Infrastructure as Code",
                       desc: "Terraform provisioning",
                     },
-                    { title: "GitOps Delivery", desc: "ArgoCD sync & waves" },
+                    { title: "GitOps Delivery", desc: "ArgoCD" },
                     {
                       title: "Package Management",
                       desc: "Helm charts & overrides",
@@ -211,7 +209,7 @@ export default function Home() {
                     aria-label="View infrastructure code"
                     as={Link}
                     endContent={<FiGithub aria-hidden="true" size={16} />}
-                    href="https://github.com/k5sha"
+                    href="https://github.com/k5sha/k5sha-gitops"
                     variant="bordered"
                   >
                     View Manifests
@@ -229,6 +227,71 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Project 1 - Coding Theory Lab */}
+        <div className="mb-32">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              <div className="p-12 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
+                    <FiCpu className="text-2xl" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Coding Theory Lab</h3>
+                  <Chip color="success">Live</Chip>
+                </div>
+                <h4 className="text-xl text-gray-600 dark:text-gray-300 mb-4">
+                  Interactive Codes Educational Tool
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  A modern, high-performance web application designed for
+                  educational and professional analysis of error-correcting
+                  codes. Features real-time interactive calculators for
+                  Recurrent, Hamming, Huffman, and Companion codes.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {["Astro 5", "TypeScript", "Tailwind CSS", "Preact"].map(
+                    (tech, index) => (
+                      <Chip key={index} variant="flat">
+                        {tech}
+                      </Chip>
+                    ),
+                  )}
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <Button
+                    aria-label="View Coding Theory Lab demo"
+                    as={Link}
+                    color="primary"
+                    endContent={<FiExternalLink aria-hidden="true" size={16} />}
+                    href="https://calculator.k5sha.xyz/"
+                    variant="solid"
+                  >
+                    Live Demo
+                  </Button>
+                  <Button
+                    aria-label="View Lab source code"
+                    as={Link}
+                    endContent={<FiGithub aria-hidden="true" size={16} />}
+                    href="https://github.com/k5sha/calculator"
+                    variant="bordered"
+                  >
+                    Source Code
+                  </Button>
+                </div>
+              </div>
+              <div className="bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-8">
+                <Image
+                  alt="Coding Theory Lab interface screenshot"
+                  className="rounded-xl shadow-2xl border border-gray-300 dark:border-gray-700"
+                  src="https://calculator.k5sha.xyz/og-image.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Project 2 - ZipZip */}
         <div className="mb-32">
           <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden">
@@ -237,17 +300,17 @@ export default function Home() {
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 p-2 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
                       className="w-8 h-8"
                       fill="none"
-                      viewBox="0 0 24 24"
                       stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
+                        d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002-2h14a2 2 0 002-2V8m-9 4h4"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth="2.5"
-                        d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002-2h14a2 2 0 002-2V8m-9 4h4"
                       />
                     </svg>
                   </div>

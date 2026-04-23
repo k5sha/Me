@@ -8,7 +8,7 @@ FROM base AS deps
 COPY package.json package-lock.json ./
 
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci --force
+    npm ci --legacy-peer-deps
 
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules

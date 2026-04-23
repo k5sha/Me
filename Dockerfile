@@ -1,6 +1,8 @@
 FROM node:22-alpine AS base
-WORKDIR /app
 
+RUN apk update && apk upgrade --no-cache
+
+WORKDIR /app
 
 FROM base AS deps
 COPY package.json package-lock.json ./
@@ -19,6 +21,9 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
 FROM node:22-alpine AS runner
+
+RUN apk update && apk upgrade --no-cache
+
 WORKDIR /app
 
 ENV NODE_ENV=production

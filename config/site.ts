@@ -30,7 +30,7 @@ export const siteConfig = {
     medium: "https://www.medium.com/@k5sha",
     sponsor: "https://patreon.com/k5sha",
     ticketo: "https://tikceto.k5sha.com/",
-    email: "yurii.yevtushenko@gmail.com",
+    email: "hello@k5sha.com",
     noti_u:
       "https://chromewebstore.google.com/detail/notiu/dfbjgkobnicdengobbigledhcjnhlopg?utm_source=item-share-cb",
   },

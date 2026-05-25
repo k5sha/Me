@@ -6,7 +6,7 @@ export type SiteConfig = typeof siteConfig;
 
 // Configs for Google Search and etc
 export const siteConfig = {
-  url: "https://k5sha.xyz",
+  url: "https://k5sha.com",
   name: "Yurii Yevtushenko",
   description:
     "👋 Hey there! I'm Yurii a full-stack developer specializing in modern web technologies",
@@ -29,7 +29,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/yurii-yevtushenko-730a502a5",
     medium: "https://www.medium.com/@k5sha",
     sponsor: "https://patreon.com/k5sha",
-    ticketo: "https://tikceto.k5sha.xyz/",
+    ticketo: "https://tikceto.k5sha.com/",
     email: "yurii.yevtushenko@gmail.com",
     noti_u:
       "https://chromewebstore.google.com/detail/notiu/dfbjgkobnicdengobbigledhcjnhlopg?utm_source=item-share-cb",

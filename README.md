@@ -1,8 +1,8 @@
 <div align="center">
   <h1>🚀 Portfolio Template</h1>
 
-  <a href="https://k5sha.xyz">
-    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fk5sha.xyz&style=for-the-badge" />
+  <a href="https://k5sha.com">
+    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fk5sha.com&style=for-the-badge" />
   </a>
   <a href="https://nextjs.org/">
     <img alt="Next.js" src="https://img.shields.io/badge/Next.js-black?logo=next.js&style=for-the-badge" />
@@ -30,7 +30,7 @@
 
 ## 🔗 Live Demo
 
-👉 **[View the live site here](https://k5sha.xyz/)**
+👉 **[View the live site here](https://k5sha.com/)**
 
 ## 🔧 Built With
 

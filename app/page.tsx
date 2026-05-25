@@ -265,7 +265,7 @@ export default function Home() {
                     as={Link}
                     color="primary"
                     endContent={<FiExternalLink aria-hidden="true" size={16} />}
-                    href="https://calculator.k5sha.xyz/"
+                    href="https://calculator.k5sha.com/"
                     variant="solid"
                   >
                     Live Demo
@@ -285,7 +285,7 @@ export default function Home() {
                 <Image
                   alt="Coding Theory Lab interface screenshot"
                   className="rounded-xl shadow-2xl border border-gray-300 dark:border-gray-700"
-                  src="https://calculator.k5sha.xyz/og-image.png"
+                  src="https://calculator.k5sha.com/og-image.png"
                 />
               </div>
             </div>

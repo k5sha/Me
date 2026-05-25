@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://k5sha.xyz
+Host: https://k5sha.com
 
 # Sitemaps
-Sitemap: https://k5sha.xyz/sitemap.xml
+Sitemap: https://k5sha.com/sitemap.xml

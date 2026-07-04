@@ -16,6 +16,7 @@ export default [
   pluginReact.configs.flat.recommended,
   {
     ignores: [
+      "next-env.d.ts",
       ".now/*",
       "*.css",
       ".changeset",

@@ -21,7 +21,7 @@ export const siteConfig = {
     "My portfolio",
     "Юрій Євтушенко",
     "Розробка",
-    "Бекенд"
+    "Бекенд",
   ],
   buildID: process.env.NEXT_PUBLIC_BUILD_VERSION || "Unknown",
   links: {

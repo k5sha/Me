@@ -30,7 +30,7 @@ export function MediumArticles() {
     const fetchMediumArticles = async () => {
       try {
         const response = await fetch(
-          `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@k5sha`
+          `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@k5sha`,
         );
         const data = await response.json();
 
@@ -39,7 +39,7 @@ export function MediumArticles() {
         } else {
           setError("Failed to fetch articles");
         }
-      } catch (err) {
+      } catch {
         setError("Error fetching articles");
       } finally {
         setLoading(false);

@@ -23,8 +23,8 @@ export default function NotFound() {
       <Button
         as={Link}
         className="text-sm font-normal text-white bg-primary-400 dark:bg-primary-500 hover:bg-primary-400"
-        href="/"
         endContent={<FaHome size={22} />}
+        href="/"
         variant="flat"
       >
         Go Home

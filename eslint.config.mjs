@@ -9,13 +9,35 @@ import pluginUnusedImports from "eslint-plugin-unused-imports";
 import pluginImport from "eslint-plugin-import";
 import pluginPrettier from "eslint-plugin-prettier";
 import configPrettier from "eslint-config-prettier";
-import { defineConfig } from "eslint/config";
 
-export default defineConfig([
+export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-
+  {
+    ignores: [
+      ".now/*",
+      "*.css",
+      ".changeset",
+      "dist",
+      "esm/*",
+      "public/*",
+      "tests/*",
+      "scripts/*",
+      "*.config.js",
+      ".DS_Store",
+      "node_modules",
+      "coverage",
+      ".next",
+      "build",
+      "!.commitlintrc.cjs",
+      "!.lintstagedrc.cjs",
+      "!jest.config.js",
+      "!plopfile.js",
+      "!react-shim.js",
+      "!tsup.config.ts",
+    ],
+  },
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     plugins: {
@@ -23,15 +45,15 @@ export default defineConfig([
       "jsx-a11y": pluginJsxA11y,
       "@next/next": pluginNext,
       "unused-imports": pluginUnusedImports,
-      "import": pluginImport,
-      "prettier": pluginPrettier,
+      import: pluginImport,
+      prettier: pluginPrettier,
     },
     languageOptions: {
       ecmaVersion: 12,
       sourceType: "module",
       globals: {
         ...globals.browser,
-        ...globals.node, 
+        ...globals.node,
       },
       parserOptions: {
         ecmaFeatures: {
@@ -56,7 +78,7 @@ export default defineConfig([
       "react-hooks/exhaustive-deps": "off",
       "jsx-a11y/click-events-have-key-events": "warn",
       "jsx-a11y/interactive-supports-focus": "warn",
-      
+
       "prettier/prettier": "warn",
 
       "no-unused-vars": "off",
@@ -65,16 +87,16 @@ export default defineConfig([
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {
-          "args": "after-used",
-          "ignoreRestSiblings": false,
-          "argsIgnorePattern": "^_.*?$"
-        }
+          args: "after-used",
+          ignoreRestSiblings: false,
+          argsIgnorePattern: "^_.*?$",
+        },
       ],
-      
+
       "import/order": [
         "warn",
         {
-          "groups": [
+          groups: [
             "type",
             "builtin",
             "object",
@@ -82,43 +104,43 @@ export default defineConfig([
             "internal",
             "parent",
             "sibling",
-            "index"
+            "index",
           ],
-          "pathGroups": [
+          pathGroups: [
             {
-              "pattern": "~/**",
-              "group": "external",
-              "position": "after"
-            }
+              pattern: "~/**",
+              group: "external",
+              position: "after",
+            },
           ],
-          "newlines-between": "always"
-        }
+          "newlines-between": "always",
+        },
       ],
-      
+
       "react/self-closing-comp": "warn",
       "react/jsx-sort-props": [
         "warn",
         {
-          "callbacksLast": true,
-          "shorthandFirst": true,
-          "noSortAlphabetically": false,
-          "reservedFirst": true
-        }
+          callbacksLast: true,
+          shorthandFirst: true,
+          noSortAlphabetically: false,
+          reservedFirst: true,
+        },
       ],
-      
+
       // Отступы между секциями кода
       "padding-line-between-statements": [
         "warn",
-        {"blankLine": "always", "prev": "*", "next": "return"},
-        {"blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
+        { blankLine: "always", prev: "*", next: "return" },
+        { blankLine: "always", prev: ["const", "let", "var"], next: "*" },
         {
-          "blankLine": "any",
-          "prev": ["const", "let", "var"],
-          "next": ["const", "let", "var"]
-        }
-      ]
+          blankLine: "any",
+          prev: ["const", "let", "var"],
+          next: ["const", "let", "var"],
+        },
+      ],
     },
   },
-  
+
   configPrettier,
-]);
+];

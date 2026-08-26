@@ -1,0 +1,33 @@
+name: "🚀 Pipeline (CI/CD)"
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: "CI ⚙️"
+    uses: k5sha/workflow-ci-cd-templates/.github/workflows/ci-node.yml@master
+    permissions:
+      contents: read
+      packages: write
+    with:
+      node_version: "22"
+      run_lint: true
+      build_args: |
+            NEXT_PUBLIC_BUILD_VERSION=${{ github.sha }}
+
+  cd:
+    name: "CD 🔨"
+    needs: ci
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    uses: k5sha/workflow-ci-cd-templates/.github/workflows/cd-gitops.yml@master
+    with:
+      manifest_path: "manifests/portfolio"
+      manifest_file: "deployment.yaml"
+      image_tag: ${{ needs.ci.outputs.short_sha }}
+    secrets:
+      INFRA_REPO_TOKEN: ${{ secrets.INFRA_REPO_TOKEN }}
